@@ -66,9 +66,9 @@ MongooseFruit.find(function(err, returnDocs){
     console.log(err);
   } else {
 
-    returnDocs.forEach(
-      returnDoc => console.log(returnDoc.name)
-    );
+    returnDocs.forEach( function(returnDoc) {
+      console.log(returnDoc.name)
+    });
 
   }
 });
