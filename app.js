@@ -45,11 +45,26 @@ const banana = new MongooseFruit ({
 // will not be saved BUT the rest (name and review fields) will be saved
 // as it is not a FATAL Error.
 
-//Model.insertMany() - see documentation
-MongooseFruit.insertMany([mongooseFruit, kiwi, orange, banana], function(err){
+
+// //Model.insertMany() - see documentation
+// MongooseFruit.insertMany([mongooseFruit, kiwi, orange, banana], function(err){
+//   if (err) {
+//     console.log(err);
+//   } else {
+//     console.log("Successfully saved all the fruits to fruitsDB");
+//   }
+// });
+
+
+
+
+
+// Reading
+// this will read the documents in the "mongooseFruits" collection (if no error)
+MongooseFruit.find(function(err, returnDocs){
   if (err) {
     console.log(err);
   } else {
-    console.log("Successfully saved all the fruits to fruitsDB");
+    console.log(returnDocs);
   }
 });
