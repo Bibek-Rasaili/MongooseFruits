@@ -70,5 +70,6 @@ MongooseFruit.find(function(err, returnDocs){
       console.log(returnDoc.name)
     });
 
+    mongoose.connection.close();
   }
 });
