@@ -16,46 +16,40 @@ const mongooseFruitSchema = new mongoose.Schema({
 // This is produce a new collection called mongooseFruits (s added by mongoose!).
 const MongooseFruit = mongoose.model("mongooseFruit", mongooseFruitSchema);
 
-// constructing a document instance
+
+// Adding multiple documents to the collection
 const mongooseFruit = new MongooseFruit ({
   name: "Apple",
   rating: 7,
-  review: "Apple a day, keeps the doctor away"
+  review: "An apple a day, keeps the doctor away."
+})
+
+const kiwi = new MongooseFruit ({
+  name: "Kiwi",
+  rating: 7,
+  review: "Great fruit"
 });
 
-//this will save/add the document(s), in the "mongooseFruits" collection in the
-// mongooseFruitsDB databse.
-mongooseFruit.save();
+const orange = new MongooseFruit ({
+  name: "Orange",
+  score: 8,
+  review: "Kinda sour"
+});
 
-// The above is mongoose performing the same action as specified below (in insertDocuments())
+const banana = new MongooseFruit ({
+  name: "Banana",
+  score: 9,
+  review: "Great Stuff!"
+});
+// document field(s) such as score (instead of rating) that does not follow the Schema
+// will not be saved BUT the rest (name and review fields) will be saved
+// as it is not a FATAL Error.
 
-// Copied over from FruitsProject which uses MongoDB Native Driver
-// Adding new documents/ data to the Database
-const insertDocuments = function(db, callback) {
-  // Get the collection (or creates the collection)
-  const collection = db.collection('fruits');
-  // Insert some documents
-  collection.insertMany([
-    {
-      name: "Apple",
-      score: 7,
-      review: "Great fruit"
-    },
-    {
-      name: "Orange",
-      score: 8,
-      review: "Kinda sour"
-    },
-    {
-      name: "Banana",
-      score: 9,
-      review: "Great Stuff!"
-    }
-  ], function(err, result){
-    assert.equal(err, null);
-    assert.equal(3, result.result.n);
-    assert.equal(3, result.ops.length);
-    console.log("Inserted 3 documents into the collection");
-    callback(result);
-  })
-}
+//Model.insertMany() - see documentation
+MongooseFruit.insertMany([mongooseFruit, kiwi, orange, banana], function(err){
+  if (err) {
+    console.log(err);
+  } else {
+    console.log("Successfully saved all the fruits to fruitsDB");
+  }
+});
