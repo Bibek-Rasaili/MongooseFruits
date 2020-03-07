@@ -110,7 +110,7 @@ const mongooseFruit = new MongooseFruit ({
 // Delete a document
 MongooseFruit.deleteOne(
   {
-    _id: "5e639ec9f0f0143617a8bd40"
+    name: "Peach"
   },
   function(err) {
     if (err) {
