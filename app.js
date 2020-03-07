@@ -61,7 +61,7 @@ const mongooseFruit = new MongooseFruit ({
 
 
 // Add One - instance.save()
-mongooseFruit.save();
+// mongooseFruit.save();
 
 
 // Add Many
@@ -89,3 +89,20 @@ mongooseFruit.save();
 //     mongoose.connection.close();
 //   }
 // });
+
+// Update exisiting document
+MongooseFruit.updateOne(
+  { //condition/filter
+    _id: "5e639affb17e09349ab1c376"
+  },
+  { // what you would like to update
+    name: "Peach"
+  },
+  function(err){ //callback function (fn) - error handing..
+    if (err) {
+      console.log(err);
+    } else {
+      console.log("Success.");
+    }
+  }
+);
