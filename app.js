@@ -7,7 +7,10 @@ mongoose.connect("mongodb://localhost:27017/mongooseFruitsDB", { useNewUrlParser
 
 // Schema for document collection
 const mongooseFruitSchema = new mongoose.Schema({
-  name: String,
+  name: {
+    type: String,
+    required: true
+  },
   rating: {
     type: Number,
     min: 1,
