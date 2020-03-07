@@ -27,7 +27,7 @@ const MongooseFruit = mongoose.model("mongooseFruit", mongooseFruitSchema);
 // Adding multiple documents to the collection
 
 const mongooseFruit = new MongooseFruit ({
-
+  name: "Peach",
   rating: 8,
   review: "Peaches are great."
 });
