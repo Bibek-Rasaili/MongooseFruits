@@ -9,7 +9,7 @@ mongoose.connect("mongodb://localhost:27017/mongooseFruitsDB", { useNewUrlParser
 const mongooseFruitSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: true
+    required: [true, "Error! No name specified."]
   },
   rating: {
     type: Number,
