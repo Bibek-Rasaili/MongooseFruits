@@ -8,7 +8,11 @@ mongoose.connect("mongodb://localhost:27017/mongooseFruitsDB", { useNewUrlParser
 // Schema for document collection
 const mongooseFruitSchema = new mongoose.Schema({
   name: String,
-  rating: Number,
+  rating: {
+    type: Number,
+    min: 1,
+    max: 10
+  },
   review: String
 });
 
@@ -18,34 +22,46 @@ const MongooseFruit = mongoose.model("mongooseFruit", mongooseFruitSchema);
 
 
 // Adding multiple documents to the collection
+
 const mongooseFruit = new MongooseFruit ({
-  name: "Apple",
-  rating: 7,
-  review: "An apple a day, keeps the doctor away."
-})
-
-const kiwi = new MongooseFruit ({
-  name: "Kiwi",
-  rating: 7,
-  review: "Great fruit"
+  name: "Guava",
+  rating: 34,
+  review: "Tasty and Healthy."
 });
 
-const orange = new MongooseFruit ({
-  name: "Orange",
-  score: 8,
-  review: "Kinda sour"
-});
-
-const banana = new MongooseFruit ({
-  name: "Banana",
-  score: 9,
-  review: "Great Stuff!"
-});
+// const apple = new MongooseFruit ({
+//   name: "Apple",
+//   rating: 7,
+//   review: "An apple a day, keeps the doctor away."
+// });
+//
+// const kiwi = new MongooseFruit ({
+//   name: "Kiwi",
+//   rating: 7,
+//   review: "Great fruit"
+// });
+//
+// const orange = new MongooseFruit ({
+//   name: "Orange",
+//   score: 8,
+//   review: "Kinda sour"
+// });
+//
+// const banana = new MongooseFruit ({
+//   name: "Banana",
+//   score: 9,
+//   review: "Great Stuff!"
+// });
 // document field(s) such as score (instead of rating) that does not follow the Schema
 // will not be saved BUT the rest (name and review fields) will be saved
 // as it is not a FATAL Error.
 
 
+// Add One - instance.save()
+mongooseFruit.save();
+
+
+// Add Many
 // //Model.insertMany() - see documentation
 // MongooseFruit.insertMany([mongooseFruit, kiwi, orange, banana], function(err){
 //   if (err) {
@@ -56,20 +72,17 @@ const banana = new MongooseFruit ({
 // });
 
 
-
-
-
 // Reading
 // this will read the documents in the "mongooseFruits" collection (if no error)
-MongooseFruit.find(function(err, returnDocs){
-  if (err) {
-    console.log(err);
-  } else {
-
-    returnDocs.forEach( function(returnDoc) {
-      console.log(returnDoc.name)
-    });
-
-    mongoose.connection.close();
-  }
-});
+// MongooseFruit.find(function(err, returnDocs){
+//   if (err) {
+//     console.log(err);
+//   } else {
+//
+//     returnDocs.forEach( function(returnDoc) {
+//       console.log(returnDoc.name)
+//     });
+//
+//     mongoose.connection.close();
+//   }
+// });
