@@ -25,33 +25,33 @@ const MongooseFruit = mongoose.model("mongooseFruit", mongooseFruitSchema);
 
 const mongooseFruit = new MongooseFruit ({
   name: "Guava",
-  rating: 34,
+  rating: 9,
   review: "Tasty and Healthy."
 });
 
-// const apple = new MongooseFruit ({
-//   name: "Apple",
-//   rating: 7,
-//   review: "An apple a day, keeps the doctor away."
-// });
-//
-// const kiwi = new MongooseFruit ({
-//   name: "Kiwi",
-//   rating: 7,
-//   review: "Great fruit"
-// });
-//
-// const orange = new MongooseFruit ({
-//   name: "Orange",
-//   score: 8,
-//   review: "Kinda sour"
-// });
-//
-// const banana = new MongooseFruit ({
-//   name: "Banana",
-//   score: 9,
-//   review: "Great Stuff!"
-// });
+const apple = new MongooseFruit ({
+  name: "Apple",
+  rating: 7,
+  review: "An apple a day, keeps the doctor away."
+});
+
+const kiwi = new MongooseFruit ({
+  name: "Kiwi",
+  rating: 7,
+  review: "Great fruit"
+});
+
+const orange = new MongooseFruit ({
+  name: "Orange",
+  score: 8,
+  review: "Kinda sour"
+});
+
+const banana = new MongooseFruit ({
+  name: "Banana",
+  score: 9,
+  review: "Great Stuff!"
+});
 // document field(s) such as score (instead of rating) that does not follow the Schema
 // will not be saved BUT the rest (name and review fields) will be saved
 // as it is not a FATAL Error.
@@ -62,14 +62,14 @@ mongooseFruit.save();
 
 
 // Add Many
-// //Model.insertMany() - see documentation
-// MongooseFruit.insertMany([mongooseFruit, kiwi, orange, banana], function(err){
-//   if (err) {
-//     console.log(err);
-//   } else {
-//     console.log("Successfully saved all the fruits to fruitsDB");
-//   }
-// });
+//Model.insertMany() - see documentation
+MongooseFruit.insertMany([ kiwi, orange, banana], function(err){
+  if (err) {
+    console.log(err);
+  } else {
+    console.log("Successfully saved all the fruits to fruitsDB");
+  }
+});
 
 
 // Reading
