@@ -63,7 +63,6 @@ const mongooseFruit = new MongooseFruit ({
 // Add One - instance.save()
 // mongooseFruit.save();
 
-
 // Add Many
 //Model.insertMany() - see documentation
 // MongooseFruit.insertMany([ kiwi, orange, banana], function(err){ //mongooseFruit taken out due to valdation error - see title.
@@ -90,6 +89,7 @@ const mongooseFruit = new MongooseFruit ({
 //   }
 // });
 
+
 // Update exisiting document
 // MongooseFruit.updateOne(
 //   { //condition/filter
@@ -107,16 +107,31 @@ const mongooseFruit = new MongooseFruit ({
 //   }
 // );
 
+
 // Delete a document
-MongooseFruit.deleteOne(
+// MongooseFruit.deleteOne(
+//   {
+//     name: "Peach" //Best to use field like ID as we are in .deleteOne() - specific
+//   },
+//   function(err) {
+//     if (err) {
+//       console.log(err);
+//     } else {
+//       console.log("Deleted. ");
+//     }
+//   }
+// );
+
+// Delete MANY
+MongooseFruit.deleteMany(
   {
-    name: "Peach"
+    name: "Peach" //condition - delete all document(s) with name "Peach"
   },
-  function(err) {
+  function (err) { //callback function - error handling ..
     if (err) {
       console.log(err);
     } else {
-      console.log("Deleted. ");
+      console.log("All Peaches deleted.");
     }
   }
 );
