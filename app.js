@@ -63,7 +63,7 @@ mongooseFruit.save();
 
 // Add Many
 //Model.insertMany() - see documentation
-MongooseFruit.insertMany([ kiwi, orange, banana], function(err){
+MongooseFruit.insertMany([ kiwi, orange, banana], function(err){ //mongooseFruit taken out due to valdation error - see title.
   if (err) {
     console.log(err);
   } else {
