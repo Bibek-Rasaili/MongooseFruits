@@ -91,18 +91,32 @@ const mongooseFruit = new MongooseFruit ({
 // });
 
 // Update exisiting document
-MongooseFruit.updateOne(
-  { //condition/filter
-    _id: "5e639affb17e09349ab1c376"
+// MongooseFruit.updateOne(
+//   { //condition/filter
+//     _id: "5e639affb17e09349ab1c376"
+//   },
+//   { // what you would like to update
+//     name: "Peach"
+//   },
+//   function(err){ //callback function (fn) - error handing..
+//     if (err) {
+//       console.log(err);
+//     } else {
+//       console.log("Success.");
+//     }
+//   }
+// );
+
+// Delete a document
+MongooseFruit.deleteOne(
+  {
+    _id: "5e639ec9f0f0143617a8bd40"
   },
-  { // what you would like to update
-    name: "Peach"
-  },
-  function(err){ //callback function (fn) - error handing..
+  function(err) {
     if (err) {
       console.log(err);
     } else {
-      console.log("Success.");
+      console.log("Deleted. ");
     }
   }
 );
